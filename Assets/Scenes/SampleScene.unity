@@ -245,6 +245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  lifeTime: 3
 --- !u!212 &1329138112
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -411,7 +412,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   bulletPrefab: {fileID: 1329138110}
-  firePoint: {fileID: 0}
+  firePoint: {fileID: 1401152891}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
