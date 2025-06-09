@@ -13,9 +13,10 @@ public class enemy_bullet : MonoBehaviour
 
     void Update()
     {
-        time = (float)(((180 / freq) * time / Math.PI) % (180 * 360 / Math.PI));
-        speed = -10 + (float)(Math.Sin(time)) * 9;
+        float radian = (float)(Math.PI / 180 * time);
+        Debug.Log(radian);
+        speed = -10 + (float)(Math.Sin(radian)) * 9;
         transform.Translate(Vector3.up * speed * Time.deltaTime);
-        time += 0.5f;
+        time += Time.deltaTime;
     }
 }
