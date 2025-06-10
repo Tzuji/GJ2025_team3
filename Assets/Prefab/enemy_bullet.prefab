@@ -100,6 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   freq: 0.5
+  targetObject: {fileID: 4965078990146834869, guid: 60205f5d6b81cc14da8b076c89918588, type: 3}
 --- !u!61 &2350956466540370452
 BoxCollider2D:
   m_ObjectHideFlags: 0

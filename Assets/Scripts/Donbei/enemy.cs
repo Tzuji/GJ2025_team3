@@ -16,8 +16,12 @@ public class enemy : MonoBehaviour
     void Update()
     {
         Vector3 vector3 = player.transform.position - this.transform.position;
+        vector3.z = 0;
+        //vector3.x = 0;
+        //vector3.y = 0;
         Quaternion quaternion = Quaternion.LookRotation(vector3);
         this.transform.rotation = quaternion;
+
         if (time > 2f)//２秒に一回発射
         {
             Debug.Log("on");
