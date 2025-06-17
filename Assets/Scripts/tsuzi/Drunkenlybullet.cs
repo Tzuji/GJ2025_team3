@@ -8,7 +8,7 @@ public class Drunkenlybullet : MonoBehaviour
     public float waveAmp = 0.2f;
 
     private Transform target;
-    private Vector2 moveDirection;
+    public Vector2 moveDirection;
     private Vector2 perpendicular;
     private float timeCounter;
 
