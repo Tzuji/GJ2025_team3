@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6043521352235086095}
   m_Layer: 0
   m_Name: player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  bulletPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 7966932945181422449, guid: edcb340c75d052042b1c5b3179f008e2, type: 3}
   firePoint: {fileID: 4908909055189810039}
 --- !u!61 &5672404548144475591
 BoxCollider2D:
