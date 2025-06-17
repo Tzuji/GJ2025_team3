@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8048482366266669201}
   - component: {fileID: 410773114303095805}
   - component: {fileID: 2350956466540370452}
-  - component: {fileID: -3218503139882939630}
+  - component: {fileID: -304492634450295711}
   m_Layer: 0
-  m_Name: enemy_bullet
+  m_Name: enemy_homig
   m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -131,7 +131,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &-3218503139882939630
+--- !u!114 &-304492634450295711
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,8 +140,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7292685390258880037}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49d9a2403040acf4cb754d4f927c3c8d, type: 3}
+  m_Script: {fileID: 11500000, guid: 8584fedadfc50374e952eb7f3d8654cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  freq: 1
+  target: {fileID: 0}
+  speed: 10
+  rotateSpeed: 100
