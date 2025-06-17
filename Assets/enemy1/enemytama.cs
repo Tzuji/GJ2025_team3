@@ -8,6 +8,13 @@ public class HomingBullet : MonoBehaviour
 
     void Update()
     {
+        // YÀ•W‚ª -5 ‚ğ‰º‰ñ‚Á‚½‚çíœ
+        if (transform.position.y < -5f)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         if (target == null)
         {
             Destroy(gameObject);
