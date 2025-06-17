@@ -7,20 +7,17 @@ public class Drunkenlybullet : MonoBehaviour
     public float waveFreq = 5f;
     public float waveAmp = 0.2f;
 
-    private Transform target;
-    public Vector2 moveDirection;
+    [HideInInspector]
+    public Vector2 moveDirection;  // ← 外部からセットされる
     private Vector2 perpendicular;
     private float timeCounter;
 
     void Start()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (moveDirection == Vector2.zero)
+            moveDirection = Vector2.down;
 
-        target = player.transform;
-
-        Vector2 dir = (target.position - transform.position).normalized;
-        moveDirection = dir;
-        perpendicular = new Vector2(-dir.y, dir.x);
+        perpendicular = new Vector2(-moveDirection.y, moveDirection.x);
 
         StartCoroutine(ScaleDown());
     }
