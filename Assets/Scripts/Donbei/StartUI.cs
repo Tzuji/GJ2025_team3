@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class StartUI : MonoBehaviour
 {
-    void OnTriggerEnter(Collider collision)
+    private GameObject Canvas;
+    void Start()
     {
-        if (collision.tag == "PlayerBullet")
+        Canvas = GameObject.Find("StartUI");
+    }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "PlayerBullet")
         {
-            gameObject.SetActive(false);
+            this.gameObject.SetActive(false);
+            Canvas.SetActive(false);
         }
         Debug.Log("touched");
     }
