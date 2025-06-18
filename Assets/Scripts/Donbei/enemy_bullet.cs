@@ -6,11 +6,8 @@ using UnityEngine;
 public class enemy_bullet : MonoBehaviour
 {
     public float speed = 2f;
-
     public float freq = 1f;
-
     private GameObject targetObject;
-
     private float time = 0f;
 
     private Vector3 basePosition;
@@ -25,7 +22,7 @@ public class enemy_bullet : MonoBehaviour
     void Update()
     {
         float radian = (float)(Math.PI / 180 * time * 360);
-        Debug.Log(radian);
+        // Debug.Log(radian);
         speed = -2 + (float)(Math.Sin(radian * freq));
         transform.Translate(direction * speed * Time.deltaTime);
         time += Time.deltaTime;
