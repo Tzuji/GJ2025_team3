@@ -29,6 +29,14 @@ public class enemy : MonoBehaviour
             time = Time.deltaTime;
         }
         time += Time.deltaTime;
+    }
 
+    void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.tag == "PlayerBullet")
+        {
+            gameObject.SetActive(false);
+        }
+        Debug.Log("destroy?");
     }
 }

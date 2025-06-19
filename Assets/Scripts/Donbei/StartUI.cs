@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StartUI : MonoBehaviour
 {
@@ -14,7 +16,9 @@ public class StartUI : MonoBehaviour
         if (collision.gameObject.tag == "PlayerBullet")
         {
             this.gameObject.SetActive(false);
+            collision.gameObject.SetActive(false);
             Canvas.SetActive(false);
+            SceneManager.LoadScene("donbei");
         }
         Debug.Log("touched");
     }
