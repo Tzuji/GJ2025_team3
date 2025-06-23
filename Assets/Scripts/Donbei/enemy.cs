@@ -16,27 +16,18 @@ public class enemy : MonoBehaviour
     void Update()
     {
         Vector3 vector3 = player.transform.position - this.transform.position;
+
         vector3.z = 0;
-        //vector3.x = 0;
-        //vector3.y = 0;
         Quaternion quaternion = Quaternion.LookRotation(vector3);
         this.transform.rotation = quaternion;
 
-        if (time > 2f)//２秒に一回発射
+        if (time > 2f
+        && Vector3.Distance(player.transform.position, transform.position) <= 10)//２秒に一回発射
         {
             Debug.Log("on");
             Instantiate(bulletPrefab, transform.position, Quaternion.identity);
             time = Time.deltaTime;
         }
         time += Time.deltaTime;
-    }
-
-    void OnTriggerEnter(Collider collision)
-    {
-        if (collision.gameObject.tag == "PlayerBullet")
-        {
-            gameObject.SetActive(false);
-        }
-        Debug.Log("destroy?");
     }
 }

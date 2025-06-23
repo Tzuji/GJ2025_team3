@@ -12,12 +12,14 @@ public class PlayerEvent : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log("Collision");
 
         if (collider.gameObject.tag == "EnemyBullet")
         {
             Destroy(this.gameObject);
         }
-
+        else if (collider.gameObject.tag == "Wall")
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

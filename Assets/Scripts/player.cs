@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = new Vector3(h, v, 0);
         transform.position += movement * speed * Time.deltaTime;
         time += Time.deltaTime;
-        if (Input.GetKey(KeyCode.Space) && time > 2f)
+        if (Input.GetKey(KeyCode.Space) && time > 1f)
         {
             Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
             time = Time.deltaTime;
