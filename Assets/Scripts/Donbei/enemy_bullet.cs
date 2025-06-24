@@ -17,6 +17,7 @@ public class enemy_bullet : MonoBehaviour
         targetObject = GameObject.Find("player_d");
         basePosition = transform.position;
         direction = new Vector3(basePosition.x - targetObject.transform.position.x, basePosition.y - targetObject.transform.position.y, 0f);
+        Destroy(gameObject, 2f);
     }
 
     void Update()
