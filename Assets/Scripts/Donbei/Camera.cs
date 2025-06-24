@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class Camera : MonoBehaviour
 {
-    private GameObject playerObj;
+    public GameObject playerObj;
     private Vector3 positionCache;
     // Start is called before the first frame update
     void Start()
     {
-        playerObj = GameObject.Find("player_d");
         positionCache = new(0, 0, -10);
     }
 
