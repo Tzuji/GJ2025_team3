@@ -17,7 +17,7 @@ public class PlayerEvent : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        else if (collider.gameObject.tag == "Wall")
+        else if (collider.gameObject.tag == "Wall_d" || collider.gameObject.tag == "Wall")
         {
             Destroy(this.gameObject);
         }

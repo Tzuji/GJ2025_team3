@@ -9,7 +9,7 @@ public class enemy : MonoBehaviour
     private float time;
     void Start()
     {
-        player = GameObject.Find("player");
+        player = GameObject.Find("player_d");
         time = Time.deltaTime;
     }
 
