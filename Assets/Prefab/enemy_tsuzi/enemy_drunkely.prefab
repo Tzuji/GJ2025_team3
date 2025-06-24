@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 2308142534505958211, guid: 985d54ec59b9fed4aa0e4bba0b1613f1, type: 3}
-  player: {fileID: 0}
+  player: {fileID: 4908909055189810039, guid: 64ea9111879a1264392ef21871a97d4f, type: 3}
   fireRate: 1
   lifeTime: 20
   bulletSpeed: 5
