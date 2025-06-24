@@ -1,14 +1,16 @@
 using UnityEngine;
-public class PlayerController : MonoBehaviour
+
+public class Controller : MonoBehaviour
 {
     public float speed = 1f;
     public GameObject bulletPrefab;    // 弾プレハブをここで指定
-    public Transform firePoint;        // 弾が出る位置をここで指定
+    private Transform firePoint;        // 弾が出る位置をここで指定
 
     private float time;
     void Start()
     {
         time = Time.deltaTime;
+        firePoint = this.transform;
     }
     void Update()
     {

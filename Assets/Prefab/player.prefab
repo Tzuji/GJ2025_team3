@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4908909055189810039}
   - component: {fileID: 999309964333749161}
-  - component: {fileID: 1093633907871518319}
   - component: {fileID: 5672404548144475591}
   - component: {fileID: 7480302070789330937}
   - component: {fileID: 6043521352235086095}
+  - component: {fileID: 7989690171431698898}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -88,21 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1093633907871518319
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4965078990146834869}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c35e91643ec0694798562d7e3264069, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 10
-  bulletPrefab: {fileID: 0}
-  firePoint: {fileID: 4908909055189810039}
 --- !u!61 &5672404548144475591
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -187,3 +172,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aaa79bdec3b04b4896d11305be6f46c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7989690171431698898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4965078990146834869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: facad4c027a07884fb6e7c35ffaf5c3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  bulletPrefab: {fileID: 7966932945181422449, guid: 499c5245f84b9764b85870442cf882e9, type: 3}
+  firePoint: {fileID: 0}
