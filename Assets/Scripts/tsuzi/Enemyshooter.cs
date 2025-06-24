@@ -31,36 +31,38 @@ public class EnemyShooter : MonoBehaviour
     }
 
     void Shoter()
-{
-    Vector2 shot = Vector2.down;
-    float baseAngle = Mathf.Atan2(shot.y, shot.x) * Mathf.Rad2Deg;
-
-    float angleStep = spreadAngle / (bulletCount - 1);
-    float startAngle = baseAngle - (spreadAngle / 2f);
-
-    for (int i = 0; i < bulletCount; i++)
     {
-        float angle = startAngle + angleStep * i;
-        Vector2 bulletDir = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
+        Vector2 shot = Vector2.down;
+        float baseAngle = Mathf.Atan2(shot.y, shot.x) * Mathf.Rad2Deg;
 
-        GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+        float angleStep = spreadAngle / (bulletCount - 1);
+        float startAngle = baseAngle - (spreadAngle / 2f);
 
-        Boundbullet bound = bullet.GetComponent<Boundbullet>();
-        if (bound != null)
+        for (int i = 0; i < bulletCount; i++)
         {
-            bound.moveDirection = bulletDir.normalized;
-            bound.speed = bulletSpeed;
-        }
-        
-        Drunkenlybullet drunken = bullet.GetComponent<Drunkenlybullet>();
-        if (drunken != null)
-        {
-            drunken.moveDirection = bulletDir.normalized;
-            drunken.speed = bulletSpeed;
-        }
+            float angle = startAngle + angleStep * i;
+            Vector2 bulletDir = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
 
-        Destroy(bullet, bulletLifetime);
+            GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+
+            Boundbullet bound = bullet.GetComponent<Boundbullet>();
+            if (bound != null)
+            {
+                bound.moveDirection = bulletDir.normalized;
+                bound.speed = bulletSpeed;
+            }
+
+            Drunkenlybullet drunken = bullet.GetComponent<Drunkenlybullet>();
+            if (drunken != null)
+            {
+                drunken.moveDirection = bulletDir.normalized;
+                drunken.speed = bulletSpeed;
+            }
+
+            Destroy(bullet, bulletLifetime);
+        }
     }
-}
+
+
 
 }
