@@ -13,6 +13,6 @@ public class enemy_hit : MonoBehaviour
             gameObject.SetActive(false);
             Destroy(gunObject.GetComponent<enemy>());
         }
-        Debug.Log("destroy?");
+        Debug.Log(this.gameObject.name);
     }
 }
