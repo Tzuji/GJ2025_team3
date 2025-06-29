@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public int enemiesDefeated = 0;
+    public int score = 0;
+    public bool PlayerAlive = true;
 
     void Awake()
     {
@@ -26,5 +28,16 @@ public class GameManager : MonoBehaviour
     {
         enemiesDefeated++;
         Debug.Log("倒した敵の数: " + enemiesDefeated);
+    }
+
+    public void AddScore(int point) {
+        score += point*10;
+        Debug.Log("スコア: " + score);
+    }
+
+    public void PlayerDestloy()
+    {
+        PlayerAlive = false;
+        Debug.Log("死亡");
     }
 }
