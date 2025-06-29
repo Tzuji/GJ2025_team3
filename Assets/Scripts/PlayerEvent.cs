@@ -16,10 +16,12 @@ public class PlayerEvent : MonoBehaviour
         if (collider.gameObject.tag == "EnemyBullet")
         {
             Destroy(this.gameObject);
+            GameManager.Instance.PlayerDestloy(); //Playerがいなくなったことを知らせる(クリアボーナスの関係)
         }
         else if (collider.gameObject.tag == "Wall")
         {
             Destroy(this.gameObject);
+            GameManager.Instance.PlayerDestloy(); //Playerがいなくなったことを知らせる(クリアボーナスの関係)
         }
     }
 }

@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/Stage_tsuzi.unity
+    path: Assets/Scenes/stage_tsuzi.unity
     guid: c2efc277e1fe68f49a971905b81f1bff
   - enabled: 1
     path: Assets/Scenes/Result.unity

@@ -106,7 +106,7 @@ MonoBehaviour:
   lifeTime: 20
   bulletSpeed: 5
   bulletLifetime: 2
-  bulletCount: 4
+  bulletCount: 2
   spreadAngle: 90
 --- !u!114 &6185595378152919557
 MonoBehaviour:

@@ -15,8 +15,8 @@ public class ResultManager : MonoBehaviour
 
         if (GameManager.Instance.PlayerAlive)
         {
-            s = 100000000;
-            ClearBonus.text = "クリアボーナス +100000000";
+            s = 10000;
+            ClearBonus.text = "クリアボーナス +10000";
         }
 
         s += GameManager.Instance.score;

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyShooter : MonoBehaviour
+public class _EnemyShooter : MonoBehaviour
 {
     public GameObject bulletPrefab;
     public Transform player;              // プレイヤーの Transform
