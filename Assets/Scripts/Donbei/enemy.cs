@@ -7,6 +7,7 @@ public class enemy : MonoBehaviour
     public GameObject bulletPrefab;
     private GameObject player;
     private float time;
+
     void Start()
     {
         player = GameObject.Find("player_d");
