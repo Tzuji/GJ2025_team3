@@ -9,14 +9,22 @@ public class GameManager : MonoBehaviour
     public int enemiesDefeated = 0;
     public int score = 0;
     public bool PlayerAlive = true;
+    public float playTime = 0f;
+    private bool isTiming = false;
 
+    void Update()
+    {
+        if (isTiming)
+        {
+            playTime += Time.deltaTime;
+        }
+    }
     void Awake()
     {
-        // シングルトン化（ゲーム中にGameManagerは1つだけ）
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);  // シーンが変わっても消えない
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -29,15 +37,27 @@ public class GameManager : MonoBehaviour
         enemiesDefeated++;
         Debug.Log("倒した敵の数: " + enemiesDefeated);
     }
-
-    public void AddScore(int point) {
-        score += point*10;
+    public void AddScore(int point)
+    {
+        score += point * 100;
         Debug.Log("スコア: " + score);
     }
-
     public void PlayerDestloy()
     {
         PlayerAlive = false;
         Debug.Log("死亡");
     }
+
+    //プレイ時間記録
+    public void StartTimer()
+    {
+        playTime = 0f;
+        isTiming = true;
+    }
+
+    public void StopTimer()
+    {
+        isTiming = false;
+    }
+
 }
