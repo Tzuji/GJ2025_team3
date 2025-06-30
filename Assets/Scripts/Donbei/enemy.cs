@@ -5,6 +5,7 @@ using UnityEngine;
 public class enemy : MonoBehaviour
 {
     public GameObject bulletPrefab;
+    public float ShootingDistanceLimit = 10f; // 発射距離制限
     private GameObject player;
     private float time;
 

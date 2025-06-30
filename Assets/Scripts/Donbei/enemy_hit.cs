@@ -15,10 +15,14 @@ public class enemy_hit : MonoBehaviour
             HP -= 1;
             if (HP <= 0)
             {
-                gameObject.SetActive(false);
-                Destroy(gunObject.GetComponent<enemy>());
+                Defeated();
             }
         }
         Debug.Log(this.gameObject.name);
+    }
+    void Defeated()
+    {
+                gameObject.SetActive(false);
+                Destroy(gunObject.GetComponent<enemy>());
     }
 }

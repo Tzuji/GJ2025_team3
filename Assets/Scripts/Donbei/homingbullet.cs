@@ -12,7 +12,7 @@ public class HomingPlayerBullet : MonoBehaviour
     void Start()
     {
         Destroy(gameObject, lifeTime);
-        target = GameObject.Find("kernel");
+        target = FindNearestEnemy(transform.position);
     }
 
     void Update()
@@ -26,8 +26,8 @@ public class HomingPlayerBullet : MonoBehaviour
 
         if (!target.activeSelf)
         {
-            Debug.Log("defeated enemy");
-            target = GameObject.Find("kernel");
+            //Debug.Log("defeated enemy");
+            //target = FindNearestEnemy(transform.position);//‚±‚ê“G‚ð“|‚µ‚½‚Æ‚«‚É’e‚ªŽ~‚Ü‚ç‚È‚¢‚æ‚¤‚É‚·‚é‚½‚ß‚Ì
             return;
         }
 
@@ -40,11 +40,31 @@ public class HomingPlayerBullet : MonoBehaviour
         transform.Translate(Vector2.up * speed * Time.deltaTime);
     }
 
+    GameObject FindNearestEnemy(Vector3 fromPosition)
+    {
+        GameObject[] kernels = GameObject.FindGameObjectsWithTag("Enemy"); // ƒ^ƒO‚ðŽg‚¤•û‚ªŒø—¦“I
+        GameObject nearest = null;
+        float minDistance = Mathf.Infinity;
+
+        foreach (GameObject kernel in kernels)
+        {
+            float distance = Vector3.Distance(fromPosition, kernel.transform.position);
+            if (distance < minDistance)
+            {
+                minDistance = distance;
+                nearest = kernel;
+            }
+        }
+
+        return nearest;
+    }
+
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.name == "enemy_1")
         {
-            // ƒvƒŒƒCƒ„[‚É“–‚½‚Á‚½‚ç’e‚ðÁ‚·‚È‚Ç‚Ìˆ—
+            // “G‚É“–‚½‚Á‚½‚ç’e‚ðÁ‚·‚È‚Ç‚Ìˆ—
             Destroy(gameObject);
         }
     }
