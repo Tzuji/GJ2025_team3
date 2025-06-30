@@ -26,8 +26,8 @@ public class HomingPlayerBullet : MonoBehaviour
 
         if (!target.activeSelf)
         {
-            Debug.Log("defeated enemy");
-            target = FindNearestEnemy(transform.position);
+            //Debug.Log("defeated enemy");
+            //target = FindNearestEnemy(transform.position);//‚±‚ê“G‚ð“|‚µ‚½‚Æ‚«‚É’e‚ªŽ~‚Ü‚ç‚È‚¢‚æ‚¤‚É‚·‚é‚½‚ß‚Ì
             return;
         }
 

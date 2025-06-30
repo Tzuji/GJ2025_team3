@@ -1,6 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
-
+using static UnityEngine.Camera;
 public class Controller : MonoBehaviour
 {
     [SerializeField]
@@ -19,14 +19,16 @@ public class Controller : MonoBehaviour
     {
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
-        if (transform.position.x >= 10 && h > 0
-        || transform.position.x <= -10 && h < 0)
+        float ViewPortX = /*Camera.*/main.WorldToViewportPoint(transform.position).x;
+        float ViewPortY = /*Camera.*/main.WorldToViewportPoint(transform.position).y;
+        if (ViewPortX > 1 && h > 0
+        || ViewPortX < 0 && h < 0)
         {
             h = 0;
         }
 
-        if (transform.position.y >= 10 && v > 0
-        || transform.position.y <= -4 && v < 0)
+        if (ViewPortY > 1 && v > 0
+        || ViewPortY < 0 && v < 0)
         {
             v = 0;
         }
