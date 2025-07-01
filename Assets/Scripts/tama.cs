@@ -1,5 +1,7 @@
 using UnityEngine;
-
+namespace donbei
+{
+    
 public class Bullet : MonoBehaviour
 {
     [Header("’e‚Ìİ’è")]
@@ -28,4 +30,6 @@ public class Bullet : MonoBehaviour
     {
         direction = dir.normalized;
     }
+}
+
 }
