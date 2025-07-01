@@ -27,8 +27,8 @@ public class Controller : MonoBehaviour
             h = 0;
         }
 
-        if (ViewPortY > 1 && v > 0
-        || ViewPortY < 0 && v < 0)
+        if (ViewPortY > 0.85 && v > 0
+        || ViewPortY < 0.15 && v < 0)
         {
             v = 0;
         }
