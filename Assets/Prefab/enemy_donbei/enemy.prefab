@@ -112,6 +112,7 @@ GameObject:
   - component: {fileID: 6902442723830806118}
   - component: {fileID: 5080966222763379353}
   - component: {fileID: 860169571406651831}
+  - component: {fileID: 4643710855597694047}
   m_Layer: 0
   m_Name: kernel
   m_TagString: Enemy
@@ -281,6 +282,18 @@ VideoPlayer:
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
   m_VideoShaders: []
+--- !u!114 &4643710855597694047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5398668030718229544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 173a9024aee060447be4fda0799015bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6711249132956146119
 GameObject:
   m_ObjectHideFlags: 0
@@ -416,6 +429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 7292685390258880037, guid: 8fa45918f90c6d248b4cd8cefb8a0ba0, type: 3}
+  ShootingDistanceLimit: 10
 --- !u!1 &9081820774947681571
 GameObject:
   m_ObjectHideFlags: 0
