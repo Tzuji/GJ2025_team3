@@ -22,7 +22,8 @@ public class enemy_hit : MonoBehaviour
     }
     void Defeated()
     {
-                gameObject.SetActive(false);
-                Destroy(gunObject.GetComponent<enemy>());
+        GameManager.Instance?.AddEnemyDefeated();
+        gameObject.SetActive(false);
+        Destroy(gunObject?.GetComponent<enemy>());
     }
 }
