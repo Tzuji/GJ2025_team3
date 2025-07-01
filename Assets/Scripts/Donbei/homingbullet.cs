@@ -45,7 +45,10 @@ public class HomingPlayerBullet : MonoBehaviour
         GameObject[] kernels = GameObject.FindGameObjectsWithTag("Enemy"); // タグを使う方が効率的
         GameObject nearest = null;
         float minDistance = Mathf.Infinity;
-
+        if (kernels.Length == 0)
+        {
+            Destroy(gameObject);
+        }
         foreach (GameObject kernel in kernels)
         {
             float distance = Vector3.Distance(fromPosition, kernel.transform.position);
