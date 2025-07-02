@@ -14,6 +14,7 @@ public class Controller : MonoBehaviour
     protected float time;
     private const string Normal_path = "Assets/Prefab/PlayerBullet.prefab";
     private const string Homing_path = "Assets/Prefab/player_homig 1.prefab";
+    private readonly Camera mainCamera = Camera.main;
     private static float shootInterval = 0.1f;
 
     public void ChangeNormalBullet()
@@ -42,8 +43,8 @@ public class Controller : MonoBehaviour
     {
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
-        float ViewPortX = /*Camera.*/main.WorldToViewportPoint(transform.position).x;
-        float ViewPortY = /*Camera.*/main.WorldToViewportPoint(transform.position).y;
+        float ViewPortX = mainCamera.WorldToViewportPoint(transform.position).x;
+        float ViewPortY = mainCamera.WorldToViewportPoint(transform.position).y;
         if (ViewPortX > 1 && h > 0
         || ViewPortX < 0 && h < 0)
         {
@@ -56,7 +57,7 @@ public class Controller : MonoBehaviour
             v = 0;
         }
         Vector3 movement = new Vector3(h, v, 0);
-        transform.position += movement * speed * Time.deltaTime;
+        transform.position += speed * Time.deltaTime*movement;
         time += Time.deltaTime;
 
 
