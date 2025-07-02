@@ -249,6 +249,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StartUI
       objectReference: {fileID: 0}
+    - target: {fileID: 703366656957099884, guid: d82465de62b998d4f8b82365f620bab0, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -566,7 +570,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextSceneName: Option
-  Player: {fileID: 0}
+  Player: {fileID: 1981119926}
 --- !u!61 &1305119449
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -627,7 +631,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -863,6 +867,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66dc1965fca2637428001c70b9de778c, type: 3}
+--- !u!1 &1981119926 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2810575350553154246, guid: 8fd79fff8f806814fa30728cc3fc8594, type: 3}
+  m_PrefabInstance: {fileID: 1232407227}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

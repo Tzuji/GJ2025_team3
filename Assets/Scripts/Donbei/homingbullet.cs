@@ -6,7 +6,7 @@ public class HomingPlayerBullet : MonoBehaviour
 
     [Header("’e‚Ìİ’è")]
     public float speed = 10f;        // ’e‚Ì‘¬“x
-    public float lifeTime = 3f;      // ©“®‚ÅÁ‚¦‚é‚Ü‚Å‚ÌŠÔ
+    public float lifeTime = 1.5f;      // ©“®‚ÅÁ‚¦‚é‚Ü‚Å‚ÌŠÔ
     public float rotateSpeed = 200f;   // ’e‚Ì‰ñ“]‘¬“x
 
     void Start()
@@ -65,10 +65,9 @@ public class HomingPlayerBullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.name == "enemy_1")
+        if (other.name == "enemy_1" || other.CompareTag("Wall"))
         {
-            // “G‚É“–‚½‚Á‚½‚ç’e‚ğÁ‚·‚È‚Ç‚Ìˆ—
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

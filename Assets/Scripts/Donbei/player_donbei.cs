@@ -1,19 +1,42 @@
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static UnityEngine.Camera;
 public class Controller : MonoBehaviour
 {
     [SerializeField]
     private Animator animator;
     public float speed = 1f;
-    public GameObject bulletPrefab;    // �e�v���n�u�������Ŏw��
-    protected Transform firePoint;        // �e���o��ʒu�������Ŏw��
-
+    public GameObject bulletPrefab;
+    private static GameObject _bulletPrefab;    // 弾プレハブをここで指定
+    protected Transform firePoint;        // 弾が出る位置をここで指定
     protected float time;
+    private const string Normal_path = "Assets/Prefab/PlayerBullet.prefab";
+    private const string Homing_path = "Assets/Prefab/player_homig 1.prefab";
+    private static float shootInterval = 0.1f;
+
+    public void ChangeNormalBullet()
+    {
+        _bulletPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(Normal_path);
+        SceneManager.LoadScene("donbei");//TODO: 直接donbeiステージに行くので後々StartMenuに戻るように直す
+    }
+
+    public void ChangeHomingBullet()
+    {
+        _bulletPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(Homing_path);
+        SceneManager.LoadScene("donbei");//TODO: 直接donbeiステージに行くので後々StartMenuに戻るように直す
+        shootInterval = 0.2f;
+    }
+
     void Start()
     {
         time = Time.deltaTime;
         firePoint = this.transform;
+        if (_bulletPrefab != null)
+        {
+            bulletPrefab = _bulletPrefab;
+        }
     }
     void Update()
     {
@@ -37,7 +60,7 @@ public class Controller : MonoBehaviour
         time += Time.deltaTime;
 
 
-        if (Input.GetKey(KeyCode.Space) && time > 0.2f)
+        if (Input.GetKey(KeyCode.Space) && time > shootInterval)
         {
             Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
             time = Time.deltaTime;
