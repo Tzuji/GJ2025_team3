@@ -14,7 +14,7 @@ public class Controller : MonoBehaviour
     protected float time;
     private const string Normal_path = "Assets/Prefab/PlayerBullet.prefab";
     private const string Homing_path = "Assets/Prefab/player_homig 1.prefab";
-    private readonly Camera mainCamera = Camera.main;
+    private Camera mainCamera;
     private static float shootInterval = 0.1f;
 
     public void ChangeNormalBullet()
@@ -34,6 +34,7 @@ public class Controller : MonoBehaviour
     {
         time = Time.deltaTime;
         firePoint = this.transform;
+        mainCamera = Camera.main;
         if (_bulletPrefab != null)
         {
             bulletPrefab = _bulletPrefab;
