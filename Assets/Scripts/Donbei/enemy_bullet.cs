@@ -29,7 +29,7 @@ public class enemy_bullet : MonoBehaviour
         float radian = PI / 180 * time * 360;
         // Debug.Log(radian);
         speed = -0.8f + Sin(radian * freq);
-        transform.Translate(direction * speed * Time.deltaTime);
+        transform.Translate( speed * Time.deltaTime * direction );
         time += Time.deltaTime;
     }
 }

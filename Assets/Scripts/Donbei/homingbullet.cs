@@ -1,73 +1,92 @@
+using System.Collections;
 using UnityEngine;
 
-public class HomingPlayerBullet : MonoBehaviour
+namespace Donbei
 {
-    private GameObject target;           // ’Ç”ö‘ÎÛi“Gj
-
-    [Header("’e‚Ìİ’è")]
-    public float speed = 10f;        // ’e‚Ì‘¬“x
-    public float lifeTime = 1.5f;      // ©“®‚ÅÁ‚¦‚é‚Ü‚Å‚ÌŠÔ
-    public float rotateSpeed = 200f;   // ’e‚Ì‰ñ“]‘¬“x
-
-    void Start()
+    public class HomingPlayerBullet : MonoBehaviour
     {
-        Destroy(gameObject, lifeTime);
-        target = FindNearestEnemy(transform.position);
-    }
+        private GameObject target; // ï¿½Ç”ï¿½ï¿½ÎÛiï¿½Gï¿½j
 
-    void Update()
-    {
-        // YÀ•W‚ª -5 ‚ğ‰º‰ñ‚Á‚½‚çíœ
-        if (transform.position.y < -5f)
+        [Header("ï¿½eï¿½Ìİ’ï¿½")] public float speed = 10f; // ï¿½eï¿½Ì‘ï¿½ï¿½x
+        public float lifeTime = 1.5f; // ï¿½ï¿½ï¿½ï¿½ï¿½Åï¿½ï¿½ï¿½ï¿½ï¿½Ü‚Å‚Ìï¿½ï¿½ï¿½
+        public float rotateSpeed = 200f; // ï¿½eï¿½Ì‰ï¿½]ï¿½ï¿½ï¿½x
+
+        IEnumerator DisableAfterSeconds(float seconds)
         {
-            Destroy(gameObject);
-            return;
+            yield return new WaitForSeconds(seconds);
+            gameObject.SetActive(false);
         }
 
-        if (!target.activeSelf)
+// å‘¼ã³å‡ºã—å´
+        void Start()
         {
-            //Debug.Log("defeated enemy");
-            //target = FindNearestEnemy(transform.position);//‚±‚ê“G‚ğ“|‚µ‚½‚Æ‚«‚É’e‚ª~‚Ü‚ç‚È‚¢‚æ‚¤‚É‚·‚é‚½‚ß‚Ì
-            return;
+            StartCoroutine(DisableAfterSeconds(lifeTime));
+            target = FindNearestEnemy(transform.position);
         }
 
-        Vector2 direction = (Vector2)target.transform.position - (Vector2)transform.position;
-        direction.Normalize();
-
-        float rotateAmount = Vector3.Cross(direction, transform.up).z;
-        transform.Rotate(0, 0, -rotateAmount * rotateSpeed * Time.deltaTime);
-
-        transform.Translate(Vector2.up * speed * Time.deltaTime);
-    }
-
-    GameObject FindNearestEnemy(Vector3 fromPosition)
-    {
-        GameObject[] kernels = GameObject.FindGameObjectsWithTag("Enemy"); // ƒ^ƒO‚ğg‚¤•û‚ªŒø—¦“I
-        GameObject nearest = null;
-        float minDistance = Mathf.Infinity;
-        if (kernels.Length == 0)
+        void Update()
         {
-            Destroy(gameObject);
-        }
-        foreach (GameObject kernel in kernels)
-        {
-            float distance = Vector3.Distance(fromPosition, kernel.transform.position);
-            if (distance < minDistance)
+            // Yï¿½ï¿½ï¿½Wï¿½ï¿½ -5 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½íœ
+            if (transform.position.y < -5f)
             {
-                minDistance = distance;
-                nearest = kernel;
+                Destroy(gameObject);
+                return;
+            }
+
+            if (target is null)
+            {
+                //Debug.Log("defeated enemy");
+                //target = FindNearestEnemy(transform.position);//ï¿½ï¿½ï¿½ï¿½Gï¿½ï¿½|ï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½ï¿½É’eï¿½ï¿½ï¿½~ï¿½Ü‚ï¿½È‚ï¿½ï¿½æ‚¤ï¿½É‚ï¿½ï¿½é‚½ï¿½ß‚ï¿½
+                return;
+            }
+
+            try
+            {
+
+                Vector2 direction = (Vector2)target.transform.position - (Vector2)transform.position;
+                direction.Normalize();
+
+                float rotateAmount = Vector3.Cross(direction, transform.up).z;
+                transform.Rotate(0, 0, -rotateAmount * rotateSpeed * Time.deltaTime);
+
+                transform.Translate(speed * Time.deltaTime * Vector2.up);
+            }
+            catch (MissingReferenceException e)
+            {
+                Destroy(gameObject,0.5f);
             }
         }
-
-        return nearest;
-    }
-
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.name == "enemy_1" || other.CompareTag("Wall"))
+        
+        GameObject FindNearestEnemy(Vector3 fromPosition)
         {
-            gameObject.SetActive(false);
+            GameObject[] enemyies = GameObject.FindGameObjectsWithTag("Enemy"); // ï¿½^ï¿½Oï¿½ï¿½ï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½I
+            GameObject nearest = null;
+            float minDistance = Mathf.Infinity;
+            if (enemyies.Length == 0)
+            {
+                Destroy(gameObject);
+            }
+
+            foreach (GameObject enemy in enemyies)
+            {
+                float distance = Vector3.Distance(fromPosition, enemy.transform.position);
+                if (distance < minDistance)
+                {
+                    minDistance = distance;
+                    nearest = enemy;
+                }
+            }
+
+            return nearest;
+        }
+
+
+        void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.name == "enemy_1" || other.CompareTag("Wall"))
+            {
+                gameObject.SetActive(false);
+            }
         }
     }
 }

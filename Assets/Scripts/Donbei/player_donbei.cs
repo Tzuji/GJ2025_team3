@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -16,6 +17,8 @@ public class Controller : MonoBehaviour
     private const string Homing_path = "Assets/Prefab/player_homig 1.prefab";
     private Camera mainCamera;
     private static float shootInterval = 0.1f;
+
+    private List<GameObject> bulletPool= new(12); 
 
     public void ChangeNormalBullet()
     {
@@ -39,6 +42,7 @@ public class Controller : MonoBehaviour
         {
             bulletPrefab = _bulletPrefab;
         }
+        PoolBullet(10);
     }
     void Update()
     {
@@ -64,7 +68,8 @@ public class Controller : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space) && time > shootInterval)
         {
-            Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+            //Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);//XXX: 弾の連射速度が早いとき重いのでオブジェクトプールにしたいところ
+            ShootBullet();
             time = Time.deltaTime;
 
             animator.SetBool("Attack", true);
@@ -73,5 +78,33 @@ public class Controller : MonoBehaviour
         {
             animator.SetBool("Attack", false);
         }
+    }
+
+    private void ShootBullet()//オブジェクトプールしつつ弾を発射するメソッド
+    {
+        PoolBullet(2);
+        CallBullet();
+    }
+
+
+    private void PoolBullet(int amount)
+    {
+        //if (bulletPool.Count >index) return;
+        if (bulletPool.Count > 0) return;
+        for (int i = 0; i < amount; i++)
+        {
+            GameObject bulletInstance = Instantiate(bulletPrefab,Vector3.zero, Quaternion.identity);
+            bulletInstance.SetActive(false);
+            bulletPool.Add(bulletInstance);
+        }
+    }
+
+    private int index = 0;
+    private void CallBullet()
+    {
+        bulletPool[0].transform.position = firePoint.position;
+        bulletPool[0].SetActive(true);
+        bulletPool.RemoveAt(0);
+        //index = ++index % bulletPool.Count;
     }
 }

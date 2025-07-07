@@ -1,31 +1,31 @@
 using UnityEngine;
-namespace donbei
+namespace Donbei
 {
     
 public class Bullet : MonoBehaviour
 {
-    [Header("’e‚Ìİ’è")]
-    public float speed = 10f;        // ’e‚Ì‘¬“x
-    public float lifeTime = 3f;      // ©“®‚ÅÁ‚¦‚é‚Ü‚Å‚ÌŠÔ
+    [Header("ï¿½eï¿½Ìİ’ï¿½")]
+    public float speed = 10f;        // ï¿½eï¿½Ì‘ï¿½ï¿½x
+    public float lifeTime = 3f;      // ï¿½ï¿½ï¿½ï¿½ï¿½Åï¿½ï¿½ï¿½ï¿½ï¿½Ü‚Å‚Ìï¿½ï¿½ï¿½
 
-    private Vector3 direction = Vector3.up; // ƒfƒtƒHƒ‹ƒg‚ÌˆÚ“®•ûŒü‚ğãŒü‚«‚É•ÏX
+    private Vector3 direction = Vector3.up; // ï¿½fï¿½tï¿½Hï¿½ï¿½ï¿½gï¿½ÌˆÚ“ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É•ÏX
 
     void Start()
     {
-        // lifeTime •bŒã‚É©“®‚Åíœ‚³‚ê‚é
+        // lifeTime ï¿½bï¿½ï¿½Éï¿½ï¿½ï¿½ï¿½Åíœï¿½ï¿½ï¿½ï¿½ï¿½
         Destroy(gameObject, lifeTime);
     }
 
     void Update()
     {
-        // direction •ûŒü‚ÉˆÚ“®
-        transform.Translate(direction * speed * Time.deltaTime);
+        // direction ï¿½ï¿½ï¿½ï¿½ï¿½ÉˆÚ“ï¿½
+        transform.Translate(Time.deltaTime*speed * direction);
     }
 
     /// <summary>
-    /// ’e‚Ìis•ûŒü‚ğŠO•”‚©‚çİ’è‚·‚éi•K—v‚É‰‚¶‚Äj
+    /// ï¿½eï¿½Ìiï¿½sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ’è‚·ï¿½ï¿½iï¿½Kï¿½vï¿½É‰ï¿½ï¿½ï¿½ï¿½Äj
     /// </summary>
-    /// <param name="dir">ˆÚ“®•ûŒü</param>
+    /// <param name="dir">ï¿½Ú“ï¿½ï¿½ï¿½ï¿½ï¿½</param>
     public void SetDirection(Vector3 dir)
     {
         direction = dir.normalized;

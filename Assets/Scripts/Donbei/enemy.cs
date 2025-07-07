@@ -13,12 +13,17 @@ public class enemy : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.Find("player_d");
+        player = GameObject.FindWithTag("Player");
         time = Time.deltaTime;
     }
 
     void Update()
     {
+        if (player is null)
+        {
+            return;
+        }
+
         if (IsFollowing)
         {
             Vector3 vector3 = player.transform.position - this.transform.position;
@@ -30,10 +35,14 @@ public class enemy : MonoBehaviour
         if (time > 2f //２秒に一回発射
         && Vector3.Distance(player.transform.position, transform.position) <= ShootingDistanceLimit)//かつ射程内にプレーヤーがいたら発射
         {
-            Debug.Log("on");
             Instantiate(bulletPrefab, transform.position, Quaternion.identity);
             time = Time.deltaTime;
         }
         time += Time.deltaTime;
     }
+}
+
+public static class _Enemy
+{
+    public static GameObject _player;
 }
