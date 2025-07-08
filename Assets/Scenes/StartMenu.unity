@@ -411,6 +411,18 @@ PrefabInstance:
       value: 6.25
       objectReference: {fileID: 0}
     - target: {fileID: 2779305841491743385, guid: d82465de62b998d4f8b82365f620bab0, type: 3}
+      propertyPath: m_Size.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2779305841491743385, guid: d82465de62b998d4f8b82365f620bab0, type: 3}
+      propertyPath: m_Size.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2779305841491743385, guid: d82465de62b998d4f8b82365f620bab0, type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2779305841491743385, guid: d82465de62b998d4f8b82365f620bab0, type: 3}
       propertyPath: m_SpriteTilingProperty.drawMode
       value: 0
       objectReference: {fileID: 0}
@@ -446,9 +458,17 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4634876243233638219, guid: d82465de62b998d4f8b82365f620bab0, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 4665406393937619506, guid: d82465de62b998d4f8b82365f620bab0, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665406393937619506, guid: d82465de62b998d4f8b82365f620bab0, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 4832914377552072956, guid: d82465de62b998d4f8b82365f620bab0, type: 3}
       propertyPath: m_Layer
@@ -501,6 +521,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4634876243233638219, guid: d82465de62b998d4f8b82365f620bab0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1290050523}
+    - targetCorrespondingSourceObject: {fileID: 4634876243233638219, guid: d82465de62b998d4f8b82365f620bab0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1290050528}
     - targetCorrespondingSourceObject: {fileID: 4665406393937619506, guid: d82465de62b998d4f8b82365f620bab0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1305119450}
@@ -803,6 +826,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2098335426702214053, guid: 8fd79fff8f806814fa30728cc3fc8594, type: 3}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2810575350553154246, guid: 8fd79fff8f806814fa30728cc3fc8594, type: 3}
       propertyPath: m_Name
       value: player_d
@@ -870,6 +897,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anime: {fileID: 8232730630260187133, guid: b214d816623254c4290f61af36f6f6a0, type: 3}
+--- !u!50 &1290050528
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290050521}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1302786172
 GameObject:
   m_ObjectHideFlags: 0
@@ -956,7 +1010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextSceneName: Option
-  Player: {fileID: 0}
+  Player: {fileID: 1916507720}
 --- !u!61 &1305119449
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1000,7 +1054,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4, y: 4}
+  m_Size: {x: 1.5, y: 0.5}
   m_EdgeRadius: 0
 --- !u!50 &1305119450
 Rigidbody2D:
@@ -1017,7 +1071,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1439,6 +1493,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1916507720 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2810575350553154246, guid: 8fd79fff8f806814fa30728cc3fc8594, type: 3}
+  m_PrefabInstance: {fileID: 1232407227}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

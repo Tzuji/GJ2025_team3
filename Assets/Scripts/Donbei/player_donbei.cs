@@ -1,68 +1,52 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static UnityEngine.Camera;
+
 public class Controller : MonoBehaviour
 {
-    [SerializeField]
-    private Animator animator;
-    public float speed = 1f;
-    public GameObject bulletPrefab;
-    private static GameObject _bulletPrefab;    // 弾プレハブをここで指定
-    protected Transform firePoint;        // 弾が出る位置をここで指定
-    protected float time;
     private const string Normal_path = "Assets/Prefab/PlayerBullet.prefab";
     private const string Homing_path = "Assets/Prefab/player_homig 1.prefab";
-    private Camera mainCamera;
+    private static GameObject _bulletPrefab; // 弾プレハブをここで指定
     private static float shootInterval = 0.1f;
 
-    private List<GameObject> bulletPool= new(12); 
+    [SerializeField] private Animator animator;
 
-    public void ChangeNormalBullet()
-    {
-        _bulletPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(Normal_path);
-        SceneManager.LoadScene("donbei");//TODO: 直接donbeiステージに行くので後々StartMenuに戻るように直す
-    }
+    public float speed = 1f;
+    public GameObject bulletPrefab;
 
-    public void ChangeHomingBullet()
-    {
-        _bulletPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(Homing_path);
-        SceneManager.LoadScene("donbei");//TODO: 直接donbeiステージに行くので後々StartMenuに戻るように直す
-        shootInterval = 0.2f;
-    }
+    private readonly List<GameObject> bulletPool = new(12);
+    protected Transform firePoint; // 弾が出る位置をここで指定
 
-    void Start()
+    private int index = 0;
+    private Camera mainCamera;
+    protected float time;
+
+    private void Start()
     {
         time = Time.deltaTime;
-        firePoint = this.transform;
-        mainCamera = Camera.main;
-        if (_bulletPrefab != null)
-        {
-            bulletPrefab = _bulletPrefab;
-        }
+        firePoint = transform;
+        mainCamera = main;
+        if (_bulletPrefab != null) bulletPrefab = _bulletPrefab;
         PoolBullet(10);
     }
-    void Update()
-    {
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
-        float ViewPortX = mainCamera.WorldToViewportPoint(transform.position).x;
-        float ViewPortY = mainCamera.WorldToViewportPoint(transform.position).y;
-        if (ViewPortX > 1 && h > 0
-        || ViewPortX < 0 && h < 0)
-        {
-            h = 0;
-        }
 
-        if (ViewPortY > 0.85 && v > 0
-        || ViewPortY < 0.15 && v < 0)
-        {
+    private void Update()
+    {
+        var h = Input.GetAxis("Horizontal");
+        var v = Input.GetAxis("Vertical");
+        var ViewPortX = mainCamera.WorldToViewportPoint(transform.position).x;
+        var ViewPortY = mainCamera.WorldToViewportPoint(transform.position).y;
+        if ((ViewPortX > 1 && h > 0)
+            || (ViewPortX < 0 && h < 0))
+            h = 0;
+
+        if ((ViewPortY > 0.85 && v > 0)
+            || (ViewPortY < 0.15 && v < 0))
             v = 0;
-        }
-        Vector3 movement = new Vector3(h, v, 0);
-        transform.position += speed * Time.deltaTime*movement;
+        var movement = new Vector3(h, v, 0);
+        transform.position += speed * Time.deltaTime * movement;
         time += Time.deltaTime;
 
 
@@ -80,7 +64,20 @@ public class Controller : MonoBehaviour
         }
     }
 
-    private void ShootBullet()//オブジェクトプールしつつ弾を発射するメソッド
+    public void ChangeNormalBullet()
+    {
+        _bulletPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(Normal_path);
+        SceneManager.LoadScene("StartMenu");
+    }
+
+    public void ChangeHomingBullet()
+    {
+        _bulletPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(Homing_path);
+        SceneManager.LoadScene("StartMenu");
+        shootInterval = 0.2f;
+    }
+
+    private void ShootBullet() //オブジェクトプールしつつ弾を発射するメソッド
     {
         PoolBullet(2);
         CallBullet();
@@ -91,15 +88,14 @@ public class Controller : MonoBehaviour
     {
         //if (bulletPool.Count >index) return;
         if (bulletPool.Count > 0) return;
-        for (int i = 0; i < amount; i++)
+        for (var i = 0; i < amount; i++)
         {
-            GameObject bulletInstance = Instantiate(bulletPrefab,Vector3.zero, Quaternion.identity);
+            var bulletInstance = Instantiate(bulletPrefab, Vector3.zero, Quaternion.identity);
             bulletInstance.SetActive(false);
             bulletPool.Add(bulletInstance);
         }
     }
 
-    private int index = 0;
     private void CallBullet()
     {
         bulletPool[0].transform.position = firePoint.position;
