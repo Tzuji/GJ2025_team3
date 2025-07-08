@@ -17,7 +17,7 @@ public class StartUI : MonoBehaviour
             gameObject.SetActive(false);
             collision.gameObject.SetActive(false);
             Canvas.SetActive(false);
-            SceneManager.LoadScene("donbei");
+            SceneManager.LoadScene("Stage_tsuzi"); //
         }
 
         Debug.Log("touched");

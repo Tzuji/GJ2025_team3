@@ -25,5 +25,15 @@ public class enemy_hit : MonoBehaviour
         GameManager.Instance?.AddEnemyDefeated();
         gameObject.SetActive(false);
         Destroy(gunObject?.GetComponent<enemy>());
+
+        //倒した敵によってスコアに加算するポイントを変更bytsuji
+        if (this.gameObject.name == "boss")
+        {
+            GameManager.Instance.AddScore(50);
+        }
+        else
+        {
+            GameManager.Instance.AddScore(10);
+        }
     }
 }
