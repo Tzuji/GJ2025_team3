@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Result.unity
     guid: 21498a33a43868244ab620df658d5045
+  - enabled: 1
+    path: Assets/Scenes/donbei.unity
+    guid: bf28d3acdac1e2a419f87df0abbba607
+  - enabled: 1
+    path: Assets/Scenes/Option.unity
+    guid: b8772c12094f0944bab060ebd792c5e3
   m_configObjects: {}

@@ -5,5 +5,5 @@ using UnityEngine;
 public class EnemyGroup : MonoBehaviour
 {
     public List<GameObject> enemies; // 敵のリスト
-
+    
 }
