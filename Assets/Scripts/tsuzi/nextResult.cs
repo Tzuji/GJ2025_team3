@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ResultScene : MonoBehaviour
+public class nextResult : MonoBehaviour
 {
     public GameObject Player;
 
