@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,23 +11,33 @@ public class GameManager : MonoBehaviour
     public float playTime = 0f;
     private bool isTiming = false;
 
-    void Update()
-    {
-        if (isTiming)
-        {
-            playTime += Time.deltaTime;
-        }
-    }
     void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else
         {
             Destroy(gameObject);
+        }
+    }
+
+    void OnDestroy()
+    {
+        if (Instance == this)
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
+    }
+
+    void Update()
+    {
+        if (isTiming)
+        {
+            playTime += Time.deltaTime;
         }
     }
 
@@ -37,18 +46,19 @@ public class GameManager : MonoBehaviour
         enemiesDefeated++;
         Debug.Log("倒した敵の数: " + enemiesDefeated);
     }
+
     public void AddScore(int point)
     {
         score += point * 100;
         Debug.Log("スコア: " + score);
     }
+
     public void PlayerDestloy()
     {
         PlayerAlive = false;
         Debug.Log("死亡");
     }
 
-    //プレイ時間記録
     public void StartTimer()
     {
         playTime = 0f;
@@ -60,4 +70,12 @@ public class GameManager : MonoBehaviour
         isTiming = false;
     }
 
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("scene loaded: " + scene.name);
+        if (scene.name == "StartMenu")
+        {
+            enemiesDefeated = 0;
+        }
+    }
 }
