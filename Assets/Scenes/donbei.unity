@@ -1979,8 +1979,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4dea53ea1ddf3f4f866b7eff89bbd68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DefEnemy: {fileID: 0}
-  Time: {fileID: 0}
+  DefEnemy: {fileID: 59591757}
+  Time: {fileID: 166779262}
 --- !u!4 &1240825832
 Transform:
   m_ObjectHideFlags: 0

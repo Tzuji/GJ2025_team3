@@ -13,8 +13,6 @@ public class nextStage : MonoBehaviour
         if (Player == null)
         {
             SceneManager.LoadScene("Result");
-            GameManager.Instance.StopTimer();
-
         }
     }
     void OnTriggerEnter2D(Collider2D other)

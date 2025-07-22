@@ -73,9 +73,17 @@ public class GameManager : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Debug.Log("scene loaded: " + scene.name);
+
         if (scene.name == "StartMenu")
         {
             enemiesDefeated = 0;
+            score = 0;            
+        }
+
+        if (scene.name == "Result")
+        {
+            StopTimer();  // ← プレイヤー死亡後にResultシーンに来たらタイマー停止
         }
     }
+
 }

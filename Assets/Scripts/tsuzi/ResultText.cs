@@ -7,11 +7,12 @@ public class ResultText : MonoBehaviour
     public TextMeshProUGUI sumScore;
     public TextMeshProUGUI timeText;
     public TextMeshProUGUI ClearBonus;
+    public int s = 0;
 
     void Start()
     {
-        int s = 0;
-
+        s = 0;
+        
         resultText.text = "倒した敵の数: " + GameManager.Instance.enemiesDefeated;
 
         if (GameManager.Instance.PlayerAlive)
