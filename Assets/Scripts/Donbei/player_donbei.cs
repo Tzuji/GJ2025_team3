@@ -6,8 +6,8 @@ using static UnityEngine.Camera;
 
 public class Controller : MonoBehaviour
 {
-    private const string Normal_path = "Assets/Prefab/PlayerBullet.prefab";
-    private const string Homing_path = "Assets/Prefab/player_homig 1.prefab";
+    private const string Normal_path = "PlayerBullet";
+    private const string Homing_path = "player_homig 1";
     private static GameObject _bulletPrefab; // 弾プレハブをここで指定
     private static float shootInterval = 0.1f;
 
@@ -52,7 +52,6 @@ public class Controller : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space) && time > shootInterval)
         {
-            //Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);//XXX: 弾の連射速度が早いとき重いのでオブジェクトプールにしたいところ
             ShootBullet();
             time = Time.deltaTime;
 
@@ -66,13 +65,13 @@ public class Controller : MonoBehaviour
 
     public void ChangeNormalBullet()
     {
-        _bulletPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(Normal_path);
+        _bulletPrefab = Resources.Load<GameObject>(Normal_path);
         SceneManager.LoadScene("StartMenu");
     }
 
     public void ChangeHomingBullet()
     {
-        _bulletPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(Homing_path);
+        _bulletPrefab = Resources.Load<GameObject>(Homing_path);
         SceneManager.LoadScene("StartMenu");
         shootInterval = 0.2f;
     }
@@ -101,6 +100,5 @@ public class Controller : MonoBehaviour
         bulletPool[0].transform.position = firePoint.position;
         bulletPool[0].SetActive(true);
         bulletPool.RemoveAt(0);
-        //index = ++index % bulletPool.Count;
     }
 }
