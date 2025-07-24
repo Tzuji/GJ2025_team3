@@ -20,6 +20,10 @@ public class ResultText : MonoBehaviour
             s = 100000000;
             ClearBonus.text = "クリアボーナス +100,000,000";
         }
+        else
+        {
+            GameManager.Instance.PlayerAlive ^= true;
+         }
 
         float time = GameManager.Instance.playTime;
         int minutes = Mathf.FloorToInt(time / 60f);
